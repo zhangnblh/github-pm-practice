@@ -14,10 +14,20 @@ def list_tasks():
         status = "Done" if task["completed"] else "Todo"
         print(f"{index}. [{status}] {task['title']}")
 
+def complete_task(task_id):
+    index = task_id - 1
+
+    if index < 0 or index >= len(tasks):
+        print("Invalid task ID")
+        return
+
+    tasks[index]["completed"] = True
 
 def main():
     add_task("Learn GitHub")
     add_task("Learn IntelliJ IDEA")
+
+    complete_task(1)
 
     list_tasks()
 
